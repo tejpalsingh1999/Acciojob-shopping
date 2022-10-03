@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import "../UI/Navbar.css";
 
@@ -8,23 +8,22 @@ import insta from "../../Icons/insta.svg";
 import twitter from "../../Icons/twitter.svg";
 
 const Footer = () => {
-  const ans = ''
   const [email, setEmail] = useState('')
-  const submitHandler = (event) =>{
+  const submitHandler = (event) => {
     event.preventDefault();
     fetch('https://website-a4882-default-rtdb.asia-southeast1.firebasedatabase.app//meesage.json',
-    {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body : JSON.stringify({
-        email: email
-      })
-    }
-    ).then(res=>res.json()).then(data=>console.log(data))
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email
+        })
+      }
+    ).then(res => res.json()).then(data => console.log(data))
     alert('You will soon get a revert! Happy Shopping')
     setEmail('')
   }
-  const emailHandler = (event) =>{
+  const emailHandler = (event) => {
     setEmail(event.target.value);
   }
   return (
@@ -78,7 +77,7 @@ const Footer = () => {
         <div className="footer__nav">
           <h2>Get In Touch</h2>
           <form onSubmit={submitHandler}>
-            <input type="Email" className="input" placeholder="Your Email" onChange={emailHandler} value={email}/>
+            <input type="Email" className="input" placeholder="Your Email" onChange={emailHandler} value={email} />
             <button className="btn">Subscribe</button>
           </form>
         </div>
